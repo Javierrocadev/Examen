@@ -1,0 +1,49 @@
+﻿@model List<Comic>
+@{
+    List<string> nomselect = ViewData["NOMBRE"] as List<string>;
+}
+
+<h1>Lambda comics</h1>
+
+<form method="post">
+    <label>Introduzca un comic</label>
+    <select name="nombre">
+        @foreach ( string nombre in nomselect )
+        {
+            <option value="@nombre">@nombre</option>
+        }
+    </select>
+    <button class="btn btn-outline-success">
+        Mostrar comic
+    </button>
+</form>
+
+@if (Model != null)
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Apellido</th>
+                <th>Oficio</th>
+                <th>Salario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Comic co in Model)
+            {
+                <tr>
+                    <td>@co.IdComic</td>
+                    <td>@co.Nombre</td>
+                    <td><img src="@co.Imagen" style="width: 150px; height:150px" /></td>
+                    <td>@co.Descripcion</td>
+                    <td>
+                        <a asp-controller="Comics" asp-action="Delete" asp-route-idcomic="@co.IdComic" class="btn btn-danger">Eliminar</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Comics" asp-action="DeleteDetails" asp-route-idcomic="@co.IdComic" class="btn btn-danger">Delete confirmar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

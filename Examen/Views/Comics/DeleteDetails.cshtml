@@ -1,0 +1,14 @@
+﻿@model Comic
+
+<p>
+
+</p>
+<h1>¿Quieres eliminar este personaje?</h1>
+<ul>
+    <li>id: @Model.IdComic</li>
+    <li>nombre: @Model.Nombre</li>
+    <li><img style="width:150px; height:150px" src="@Model.Imagen" /></li>
+    <li>nombre: @Model.Descripcion</li>
+</ul>
+<a asp-controller="Comics" asp-action="Delete" asp-route-idcomic="@Model.IdComic" class="btn btn-danger">Eliminar</a>
+<a asp-controller="Comics" asp-action="Index" class="btn">Back to Index</a>

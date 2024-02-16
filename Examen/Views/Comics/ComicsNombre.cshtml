@@ -1,0 +1,36 @@
+﻿@model List<Comic>
+
+<h1>Comic Filtros</h1>
+
+<form method="post">
+    <label>Nombre personaje</label>
+    <input type="text" name="nombre" class="form-control" required />
+    <button class="btn btn-warning">
+        Buscar personaje
+    </button>
+</form>
+<h2 style="color:red">@ViewData["MENSAJE"]</h2>
+@if (Model != null)
+{
+    <table class="table table-bordered table-primary">
+        <thead>
+            <tr>
+                <th>Idpersonaje</th>
+                <th>Nombre</th>
+                <th>Imagen</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Comic co in Model)
+            {
+                <tr>
+                    <td>@co.IdComic</td>
+                    <td>@co.Nombre</td>
+                    <td><img src="@co.Imagen" style="width:150px; height:150px" /></td>
+                    <td>@co.Descripcion</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

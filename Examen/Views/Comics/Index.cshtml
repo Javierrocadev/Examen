@@ -1,0 +1,40 @@
+﻿@model List<Comic>
+
+<h1>Comic</h1>
+
+<p>
+    <a asp-controller="Comics" asp-action="Create">Crear nuevo comic</a>
+</p>
+<p>
+    <a asp-controller="Comics" asp-action="CreateLambda">Crear nuevo comic lambda</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>IdComic</th>
+            <th>Nombre</th>
+            <th>Imagen</th>
+            <th>Descripcion</th>
+            <th>Eliminar</th>
+            <th>Elim confirmacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Comic co in Model)
+        {
+            <tr>
+                <td>@co.IdComic</td>
+                <td>@co.Nombre</td>
+                <td><img src="@co.Imagen" style="width: 150px; height:150px" /></td>
+                <td>@co.Descripcion</td>
+                <td>
+                    <a asp-controller="Comics" asp-action="Delete" asp-route-idcomic="@co.IdComic" class="btn btn-danger">Eliminar</a>
+                </td>
+                <td>
+                    <a asp-controller="Comics" asp-action="DeleteDetails" asp-route-idcomic="@co.IdComic" class="btn btn-danger">Delete confirmar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
